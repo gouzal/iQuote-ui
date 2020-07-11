@@ -1,0 +1,43 @@
+<div class="main-signin">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-signin">
+        <img class="mb-4" src="" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Please login</h1>
+
+        <div *ngIf="errorMessage" class="alert alert-danger mb3">{{errorMessage}}</div>
+
+        <div class="input-group mb-3" [ngClass]="{ 'mb-5': submitted && f.email.errors }">
+            <span class="input-group-text" id="icon-email">
+                <i-bs name="envelope-fill"></i-bs>
+            </span>
+            <input type="text" class="form-control" name="email" placeholder="Email" aria-label="Email"
+                aria-describedby="icon-email" formControlName="email" [ngClass]="{
+                    'is-invalid': submitted && f.email.errors,
+                    'is-valid': submitted && f.email.valid
+                }">
+
+            <div *ngIf="submitted && f.email.errors" class="invalid-tooltip">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">Email is not valid</div>
+            </div>
+        </div>
+
+        <div class="input-group mb-3" [ngClass]="{ 'mb-5': submitted && f.password.errors }">
+            <span class="input-group-text" id="icon-password">
+                <i-bs name="lock-fill"></i-bs>
+            </span>
+            <input type="password" class="form-control" placeholder="Password" aria-label="Password"
+                aria-describedby="icon-password" formControlName="password" [ngClass]="{
+                    'is-invalid': submitted && f.password.errors,
+                    'is-valid': submitted && f.password.valid
+                }">
+            <div *ngIf="submitted && f.password.errors" class="invalid-tooltip">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+            </div>
+        </div>
+
+        <p>If you already have an account <a routerLink="/login">login</a></p>
+
+        <button class="btn btn-primary btn-block" type="submit">Register</button>
+        <p class="mt-5 mb-3 text-muted">All rights reserved &copy; {{currentDate | date:'yyyy'}}</p>
+    </form>
+</div>

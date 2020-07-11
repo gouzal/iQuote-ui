@@ -1,37 +1,76 @@
-<div class="main-signin">
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-signin">
+<div class="main-register">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-register">
         <img class="mb-4" src="" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Please login</h1>
+        <h1 class="h3 mb-3 font-weight-normal">Please register</h1>
 
         <div *ngIf="errorMessage" class="alert alert-danger mb3">{{errorMessage}}</div>
 
-        <div class="input-group mb-3" [ngClass]="{ 'mb-5': submitted && f.email.errors }">
-            <span class="input-group-text" id="icon-email">
-                <i-bs name="envelope-fill"></i-bs>
-            </span>
-            <input type="text" class="form-control" name="email" placeholder="Email" aria-label="Email"
-                aria-describedby="icon-email" formControlName="email" [ngClass]="{
-                    'is-invalid': submitted && f.email.errors,
-                    'is-valid': submitted && f.email.valid
-                }">
-
-            <div *ngIf="submitted && f.email.errors" class="invalid-tooltip">
-                <div *ngIf="f.email.errors.required">Email is required</div>
-                <div *ngIf="f.email.errors.email">Email is not valid</div>
+        <div class="position-relative mb-3" [ngClass]="{ 'mb-5': submitted && f.userName.errors }">
+            <input type="text" class="form-control" name="userName" placeholder="Username" formControlName="userName"
+                [ngClass]="{
+                'is-invalid': submitted && f.userName.errors,
+                'is-valid': submitted && f.userName.valid
+            }">
+            <div *ngIf="submitted && f.userName.errors" class="invalid-tooltip">
+                <div *ngIf="f.userName.errors.required">Username is required</div>
             </div>
         </div>
 
-        <div class="input-group mb-3" [ngClass]="{ 'mb-5': submitted && f.password.errors }">
-            <span class="input-group-text" id="icon-password">
-                <i-bs name="lock-fill"></i-bs>
-            </span>
-            <input type="password" class="form-control" placeholder="Password" aria-label="Password"
-                aria-describedby="icon-password" formControlName="password" [ngClass]="{
-                    'is-invalid': submitted && f.password.errors,
-                    'is-valid': submitted && f.password.valid
-                }">
-            <div *ngIf="submitted && f.password.errors" class="invalid-tooltip">
-                <div *ngIf="f.password.errors.required">Password is required</div>
+        <div class="position-relative mb-3" [ngClass]="{ 'mb-5': submitted && f.firstName.errors }">
+            <input type="text" class="form-control" name="firstName" placeholder="Firstname"
+                formControlName="firstName" [ngClass]="{
+                'is-invalid': submitted && f.firstName.errors,
+                'is-valid': submitted && f.firstName.valid
+            }">
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-tooltip">
+                <div *ngIf="f.firstName.errors.required">Firstname is required</div>
+            </div>
+        </div>
+
+        <div class="position-relative mb-3" [ngClass]="{ 'mb-5': submitted && f.lastName.errors }">
+            <input type="text" class="form-control" name="lastName" placeholder="Lastname" formControlName="lastName"
+                [ngClass]="{
+                'is-invalid': submitted && f.lastName.errors,
+                'is-valid': submitted && f.lastName.valid
+            }">
+            <div *ngIf="submitted && f.lastName.errors" class="invalid-tooltip">
+                <div *ngIf="f.lastName.errors.required">Lastname is required</div>
+            </div>
+        </div>
+
+        <div class="position-relative mb-3">
+            <div class="input-group" [ngClass]="{ 'mb-5': submitted && f.email.errors }">
+                <span class="input-group-text" id="icon-email">
+                    <i-bs name="envelope-fill"></i-bs>
+                </span>
+                <input type="text" class="form-control" name="email" placeholder="Email" aria-label="Email"
+                    aria-describedby="icon-email" formControlName="email" [ngClass]="{
+                        'is-invalid': submitted && f.email.errors,
+                        'is-valid': submitted && f.email.valid
+                    }">
+                <div *ngIf="submitted && f.email.errors" class="invalid-tooltip">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                    <div *ngIf="f.email.errors.email">Email is not valid</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="position-relative mb-3">
+            <div class="input-group" [ngClass]="{ 'mb-5': submitted && f.password.errors }">
+                <span class="input-group-text" id="icon-password">
+                    <i-bs name="lock-fill"></i-bs>
+                </span>
+                <input type="password" class="form-control" placeholder="Password" aria-label="Password"
+                    aria-describedby="icon-password" formControlName="password" [ngClass]="{
+                        'is-invalid': submitted && f.password.errors,
+                        'is-valid': submitted && f.password.valid
+                    }">
+                <div *ngIf="submitted && f.password.errors" class="invalid-tooltip">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                    <div *ngIf="f.password.errors.minlength">
+                        Password must contain at least {{ f.password.errors.minlength.requiredLength }} characters
+                    </div>
+                </div>
             </div>
         </div>
 

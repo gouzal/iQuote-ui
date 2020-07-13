@@ -6,7 +6,6 @@ import { ListQuotesComponent } from './components/list-quotes/list-quotes.compon
 import { SingleQuoteComponent } from './components/list-quotes/single-quote/single-quote.component';
 import { CreateQuoteComponent } from './components/list-quotes/create-quote/create-quote.component';
 import { EditQuoteComponent } from './components/list-quotes/edit-quote/edit-quote.component';
-import { AuthGuardService } from './services/auth-guard.service';
 import { LayoutComponent } from './components/layout/layout.component';
 
 const routes: Routes = [

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { QuoteService } from 'src/app/services/quote.service';
+import { Quote } from 'src/app/models/quote.model';
 
 @Component({
   selector: 'app-list-quotes',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-quotes.component.css']
 })
 export class ListQuotesComponent implements OnInit {
+  quotes: Quote[];
 
-  constructor() { }
+  constructor(
+    private quoteService: QuoteService
+  ) { }
 
   ngOnInit(): void {
+    this.quoteService.listQuotes().subscribe(
+      (quotes: Quote[]) => this.quotes = quotes
+    );
   }
 
 }

@@ -2,6 +2,13 @@ import { Injectable } from '@angular/core';
 import { Quote } from '../models/quote.model';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+// import { HttpHeaders} from '@angular/common/http';
+
+// const headers = new HttpHeaders()
+// .append('Content-Type', 'application/json')
+// .append('Access-Control-Allow-Headers', 'Content-Type')
+// .append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+// .append('Access-Control-Allow-Origin', '*');
 
 @Injectable({
   providedIn: 'root'

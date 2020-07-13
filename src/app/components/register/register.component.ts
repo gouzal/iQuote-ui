@@ -50,6 +50,14 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
+    this.user = new User(
+      this.f.userName.value,
+      this.f.password.value,
+      this.f.firstName.value,
+      this.f.lastName.value,
+      this.f.email.value
+    );
+
     this.userService.createUser(this.user);
     // .pipe(first())
     // .subscribe(

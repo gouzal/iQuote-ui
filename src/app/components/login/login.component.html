@@ -10,7 +10,7 @@
                 <span class="input-group-text" id="icon-email">
                     <i-bs name="envelope-fill"></i-bs>
                 </span>
-                <input type="text" class="form-control" name="email" placeholder="Email" aria-label="Email"
+                <input type="text" class="form-control" id="email" placeholder="Email" aria-label="Email"
                     aria-describedby="icon-email" formControlName="email" [ngClass]="{
                         'is-invalid': submitted && f.email.errors,
                         'is-valid': submitted && f.email.valid
@@ -28,7 +28,7 @@
                 <span class="input-group-text" id="icon-password">
                     <i-bs name="lock-fill"></i-bs>
                 </span>
-                <input type="password" class="form-control" placeholder="Password" aria-label="Password"
+                <input type="password" class="form-control" id="password" placeholder="Password" aria-label="Password"
                     aria-describedby="icon-password" formControlName="password" [ngClass]="{
                         'is-invalid': submitted && f.password.errors,
                         'is-valid': submitted && f.password.valid

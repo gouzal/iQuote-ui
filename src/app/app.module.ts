@@ -7,13 +7,15 @@ import { SidebarComponent } from './components/layout/sidebar/sidebar.component'
 import { FooterComponent } from './components/layout/footer/footer.component';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthService } from './services/auth.service';
-import { AuthGuardService } from './services/auth-guard.service';
 import { UserService } from './services/user.service';
 import { QuoteService } from './services/quote.service';
+import { AuthGuard } from './helpers/auth.guard';
+import { TokenInterceptor } from './helpers/token.interceptor';
+import { ErrorInterceptor } from './helpers/error.interceptor';
 
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 
@@ -35,9 +37,11 @@ import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
   ],
   providers: [
     AuthService,
-    AuthGuardService,
     UserService,
-    QuoteService
+    QuoteService,
+    AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

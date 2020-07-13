@@ -18,6 +18,7 @@ import { TokenInterceptor } from './helpers/token.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
+import { NgSelect2Module } from 'ng-select2';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
   imports: [
     BrowserModule,
     NgxBootstrapIconsModule.pick(allIcons),
+    NgSelect2Module,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

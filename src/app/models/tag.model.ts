@@ -1,7 +1,8 @@
 export class Tag
 {
+    id?: number;
+
     constructor(
-        public id: number,
         public label: string
     ) {}
 }

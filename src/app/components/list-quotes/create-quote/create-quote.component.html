@@ -1,1 +1,50 @@
-<p>create-quote works!</p>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" routerLink="/quotes"><a>Quotes</a></li>
+        <li class="breadcrumb-item active">Create Quote</li>
+    </ol>
+</nav>
+
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form [formGroup]="quoteForm" (ngSubmit)="onSubmit()" novalidate>
+            <div *ngIf="errorMessage" class="alert alert-danger mb-3">{{errorMessage}}</div>
+
+            <div class="position-relative mb-3" [ngClass]="{ 'mb-5': submitted && f.author.errors }">
+                <label for="author" class="form-label">Author</label>
+                <input type="text" class="form-control" id="author" formControlName="author" [ngClass]="{
+                    'is-invalid': submitted && f.author.errors,
+                    'is-valid': submitted && f.author.valid
+                }">
+                <div *ngIf="submitted && f.author.errors" class="invalid-tooltip">
+                    <div *ngIf="f.author.errors.required">Author is required</div>
+                </div>
+            </div>
+            <div class="position-relative mb-3" [ngClass]="{ 'mb-5': submitted && f.quote.errors }">
+                <label for="quote" class="form-label">Quote</label>
+                <textarea class="form-control" id="quote" rows="3" formControlName="quote" [ngClass]="{
+                    'is-invalid': submitted && f.quote.errors,
+                    'is-valid': submitted && f.quote.valid
+                }"></textarea>
+                <div *ngIf="submitted && f.quote.errors" class="invalid-tooltip">
+                    <div *ngIf="f.quote.errors.required">Quote is required</div>
+                </div>
+            </div>
+            <div class="position-relative mb-3">
+                <label for="tags" class="form-label">Tags</label>
+                <ng-select2 [data]="tags" id="tags" [options]="options" formControlName="tags">
+                </ng-select2>
+            </div>
+            <div class="position-relative mb-3">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="visible" formControlName="visible">
+                    <label class="form-check-label" for="visible">Visible</label>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <button class="btn btn-primary btn-block" type="submit">Create</button>
+            </div>
+        </form>
+    </div>
+</div>

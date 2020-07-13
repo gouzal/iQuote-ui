@@ -27,8 +27,7 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  initForm()
-  {
+  initForm() {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]] // Validators.pattern(/[0-9a-zA-Z]{6,}/)
@@ -37,8 +36,7 @@ export class LoginComponent implements OnInit {
 
   get f() { return this.loginForm.controls; }
 
-  onSubmit()
-  {
+  onSubmit() {
     this.submitted = true;
 
     if (this.loginForm.invalid) {

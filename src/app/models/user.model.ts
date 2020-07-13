@@ -1,7 +1,7 @@
 export class User
 {
-    id: number;
-    role: string;
+    id?: number;
+    // role: string;
     token?: string;
 
     constructor(

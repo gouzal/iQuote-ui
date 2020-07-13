@@ -12,16 +12,16 @@ const routes: Routes = [
   { path: '', redirectTo: '/quotes', pathMatch: 'full' },
   { path: 'quotes', component: LayoutComponent, /*canActivate: [AuthGuardService],*/ children: [
     { path: '', component: ListQuotesComponent },
-    { path: ':id', component: SingleQuoteComponent },
     { path: 'create', component: CreateQuoteComponent },
     { path: 'edit/:id', component: EditQuoteComponent },
+    { path: ':id', component: SingleQuoteComponent },
   ]},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   // { path: 'quotes/:id', component: SingleQuoteComponent, canActivate: [AuthGuardService] },
   // { path: 'quotes/create', component: CreateQuoteComponent, canActivate: [AuthGuardService] },
   // { path: 'quotes/edit/:id', component: EditQuoteComponent, canActivate: [AuthGuardService] },
-  // { path: '**', component: PageNotFoundComponent  },
+  // { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

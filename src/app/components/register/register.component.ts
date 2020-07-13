@@ -13,7 +13,6 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   submitted: boolean = false;
   errorMessage: string;
-  returnUrl: string;
   currentDate = new Date();
   user: User;
 
@@ -26,11 +25,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  initForm()
-  {
+  initForm() {
     this.registerForm = this.formBuilder.group({
       userName: ['', [Validators.required]],
       firstName: ['', [Validators.required]],
@@ -42,8 +39,7 @@ export class RegisterComponent implements OnInit {
 
   get f() { return this.registerForm.controls; }
 
-  onSubmit()
-  {
+  onSubmit() {
     this.submitted = true;
 
     if (this.registerForm.invalid) {
@@ -62,7 +58,7 @@ export class RegisterComponent implements OnInit {
     // .pipe(first())
     // .subscribe(
     //   data => {
-    //     this.router.navigate([this.returnUrl]);
+    //     this.router.navigate(['/quotes']);
     //   },
     //   error => {
     //     this.errorMessage = error;

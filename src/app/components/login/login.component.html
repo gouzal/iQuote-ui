@@ -1,9 +1,9 @@
 <div class="main-login">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-login">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-login" novalidate>
         <img class="mb-4" src="" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Please login</h1>
 
-        <div *ngIf="errorMessage" class="alert alert-danger mb3">{{errorMessage}}</div>
+        <div *ngIf="errorMessage" class="alert alert-danger mb-3">{{errorMessage}}</div>
 
         <div class="position-relative mb-3">
             <div class="input-group" [ngClass]="{ 'mb-5': submitted && f.email.errors }">

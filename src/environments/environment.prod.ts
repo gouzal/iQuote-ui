@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://iquote-app.herokuapp.com/api'
+  apiUrl: 'https://iquote-api.herokuapp.com/api'
 };

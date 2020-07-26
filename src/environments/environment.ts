@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://iquote-app.herokuapp.com/api'
+  apiUrl: 'https://iquote-api.herokuapp.com/api'
 };
 
 /*

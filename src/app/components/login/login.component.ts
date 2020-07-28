@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
   initForm() {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      userName: ['', [Validators.required]],
       password: ['', [Validators.required]] // Validators.pattern(/[0-9a-zA-Z]{6,}/)
     });
   }
@@ -43,12 +43,13 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    const email = this.f.email.value;
+    const userName = this.f.userName.value;
     const password = this.f.password.value;
-    this.authService.login(email, password)
+    this.authService.login(userName, password)
     .subscribe(
       data => {
-        this.router.navigate([this.returnUrl]);
+        console.log(data);
+        // this.router.navigate([this.returnUrl]);
       },
       error => {
         this.errorMessage = error;

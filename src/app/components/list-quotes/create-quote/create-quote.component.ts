@@ -41,7 +41,7 @@ export class CreateQuoteComponent implements OnInit {
   initForm() {
     this.quoteForm = this.formBuilder.group({
       author: ['', [Validators.required]],
-      quote: ['', [Validators.required]],
+      citation: ['', [Validators.required]],
       tags: [[]],
       visible: [false]
     });

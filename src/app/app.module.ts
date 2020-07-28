@@ -9,6 +9,7 @@ import { FooterComponent } from './components/layout/footer/footer.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
@@ -36,6 +37,7 @@ import { NgSelect2Module } from 'ng-select2';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    InfiniteScrollModule
   ],
   providers: [
     AuthService,

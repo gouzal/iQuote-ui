@@ -20,4 +20,8 @@ export class ListQuotesComponent implements OnInit {
     );
   }
 
+  onScroll() {
+    console.log('scrolled!!');
+  }
+
 }

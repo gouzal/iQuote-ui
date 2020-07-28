@@ -1,13 +1,15 @@
 import { Tag } from './tag.model';
+import { Author } from './author.model';
 
 export class Quote
 {
     public id?: number;
+    public createdAt?: Date;
 
     constructor(
-        public quote: string,
+        public citation: string,
         public visible: boolean,
-        public author: string,
+        public author: Author,
         public tags: Tag[]
     ) {}
 }

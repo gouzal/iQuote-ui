@@ -22,12 +22,13 @@ export class AuthService {
       return this.currentUserSubject.value;
   }
 
-  login(email: string, password: string) {
-    return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { email, password })
+  login(username: string, password: string) {
+    return this.http.post<any>(`${environment.appUrl}/authenticate`, { username, password })
     .pipe(map(data => {
+      console.log(data);
       // store user details and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem('currentUser', JSON.stringify(data));
-      this.currentUserSubject.next(data);
+      // localStorage.setItem('currentUser', JSON.stringify(data));
+      // this.currentUserSubject.next(data);
       return data;
     }));
   }

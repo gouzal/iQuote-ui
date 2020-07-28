@@ -5,17 +5,6 @@
 
         <div *ngIf="errorMessage" class="alert alert-danger mb-3">{{errorMessage}}</div>
 
-        <div class="position-relative mb-3" [ngClass]="{ 'mb-5': submitted && f.userName.errors }">
-            <input type="text" class="form-control" id="userName" placeholder="Username" formControlName="userName"
-                [ngClass]="{
-                'is-invalid': submitted && f.userName.errors,
-                'is-valid': submitted && f.userName.valid
-            }">
-            <div *ngIf="submitted && f.userName.errors" class="invalid-tooltip">
-                <div *ngIf="f.userName.errors.required">Username is required</div>
-            </div>
-        </div>
-
         <div class="position-relative mb-3" [ngClass]="{ 'mb-5': submitted && f.firstName.errors }">
             <input type="text" class="form-control" id="firstName" placeholder="Firstname"
                 formControlName="firstName" [ngClass]="{
@@ -38,19 +27,30 @@
             </div>
         </div>
 
+        <div class="position-relative mb-3" [ngClass]="{ 'mb-5': submitted && f.email.errors }">
+            <input type="text" class="form-control" id="email" placeholder="Email" formControlName="email"
+                [ngClass]="{
+                'is-invalid': submitted && f.email.errors,
+                'is-valid': submitted && f.email.valid
+            }">
+            <div *ngIf="submitted && f.email.errors" class="invalid-tooltip">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">Email is not valid</div>
+            </div>
+        </div>
+
         <div class="position-relative mb-3">
-            <div class="input-group" [ngClass]="{ 'mb-5': submitted && f.email.errors }">
-                <span class="input-group-text" id="icon-email">
-                    <i-bs name="envelope-fill"></i-bs>
+            <div class="input-group" [ngClass]="{ 'mb-5': submitted && f.userName.errors }">
+                <span class="input-group-text" id="icon-person">
+                    <i-bs name="person-fill"></i-bs>
                 </span>
-                <input type="text" class="form-control" id="email" placeholder="Email" aria-label="Email"
-                    aria-describedby="icon-email" formControlName="email" [ngClass]="{
-                        'is-invalid': submitted && f.email.errors,
-                        'is-valid': submitted && f.email.valid
+                <input type="text" class="form-control" id="email" placeholder="Username" aria-label="Username"
+                    aria-describedby="icon-person" formControlName="userName" [ngClass]="{
+                        'is-invalid': submitted && f.userName.errors,
+                        'is-valid': submitted && f.userName.valid
                     }">
-                <div *ngIf="submitted && f.email.errors" class="invalid-tooltip">
-                    <div *ngIf="f.email.errors.required">Email is required</div>
-                    <div *ngIf="f.email.errors.email">Email is not valid</div>
+                <div *ngIf="submitted && f.userName.errors" class="invalid-tooltip">
+                    <div *ngIf="f.userName.errors.required">Username is required</div>
                 </div>
             </div>
         </div>

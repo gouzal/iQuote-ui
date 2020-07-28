@@ -39,6 +39,6 @@ export class QuoteService {
 
   deleteQuote(id: number)
   {
-    return this.http.delete(`${environment.apiUrl}/quotes${id}`);
+    return this.http.delete(`${environment.apiUrl}/quotes/${id}`);
   }
 }

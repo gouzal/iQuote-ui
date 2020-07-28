@@ -7,10 +7,11 @@ import { SingleQuoteComponent } from './components/list-quotes/single-quote/sing
 import { CreateQuoteComponent } from './components/list-quotes/create-quote/create-quote.component';
 import { EditQuoteComponent } from './components/list-quotes/edit-quote/edit-quote.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { AuthGuard } from './helpers/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/quotes', pathMatch: 'full' },
-  { path: 'quotes', component: LayoutComponent, /*canActivate: [AuthGuardService],*/ children: [
+  { path: 'quotes', component: LayoutComponent, /*canActivate: [AuthGuard],*/ children: [
     { path: '', component: ListQuotesComponent },
     { path: 'create', component: CreateQuoteComponent },
     { path: 'edit/:id', component: EditQuoteComponent },

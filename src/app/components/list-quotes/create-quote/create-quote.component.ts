@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
-import { Select2OptionData } from 'ng-select2';
-import { Options } from 'select2';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { QuoteService } from 'src/app/services/quote.service';
@@ -10,12 +8,12 @@ import { Quote } from 'src/app/models/quote.model';
 @Component({
   selector: 'app-create-quote',
   templateUrl: './create-quote.component.html',
-  styleUrls: ['./create-quote.component.css']
+  styleUrls: ['./create-quote.component.css'],
+  encapsulation: ViewEncapsulation.None, 
 })
 export class CreateQuoteComponent implements OnInit {
 
-  tags: Array<Select2OptionData>;
-  options: Options;
+  tags: any[] = [];
   quoteForm: FormGroup;
   submitted: boolean = false;
   errorMessage: string;
@@ -28,12 +26,6 @@ export class CreateQuoteComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.options = {
-      width: '100%',
-      multiple: true,
-      tags: true
-    };
-
     this.getTags();
     this.initForm();
   }
@@ -42,7 +34,7 @@ export class CreateQuoteComponent implements OnInit {
     this.quoteForm = this.formBuilder.group({
       author: ['', [Validators.required]],
       citation: ['', [Validators.required]],
-      tags: [[]],
+      tags: [[], [Validators.required]],
       visible: [false]
     });
   }
@@ -53,21 +45,25 @@ export class CreateQuoteComponent implements OnInit {
     this.tags = [
       {
         id: 'multiple1',
-        text: 'Multiple 1'
+        name: 'Multiple 1'
       },
       {
         id: 'multiple2',
-        text: 'Multiple 2'
+        name: 'Multiple 2'
       },
       {
         id: 'multiple3',
-        text: 'Multiple 3'
+        name: 'Multiple 3'
       },
       {
         id: 'multiple4',
-        text: 'Multiple 4'
+        name: 'Multiple 4'
       }
     ];
+  }
+
+  addTag(name) {
+    return { name: name, tag: true };
   }
 
   onSubmit() {
@@ -78,11 +74,13 @@ export class CreateQuoteComponent implements OnInit {
     }
 
     this.quote = new Quote(
-      this.f.quote.value,
+      this.f.citation.value,
       this.f.visible.value,
       this.f.author.value,
       this.f.tags.value
     );
+
+    console.log(this.quote);
 
     // this.quoteService.createQuote(this.quote).subscribe(
     //   res => {

@@ -37,4 +37,10 @@
             [fullScreen]="false">
         </ngx-spinner>
     </div>
+
+    <div *ngIf="isFinnished" class="col-12 d-flex justify-content-center">
+        <div class="alert alert-dark" role="alert">
+            No more quotes to show
+        </div>
+    </div>
 </div>

@@ -20,20 +20,27 @@
                     <div *ngIf="f.author.errors.required">Author is required</div>
                 </div>
             </div>
-            <div class="position-relative mb-3" [ngClass]="{ 'mb-5': submitted && f.quote.errors }">
-                <label for="quote" class="form-label">Quote</label>
-                <textarea class="form-control" id="quote" rows="3" formControlName="quote" [ngClass]="{
-                    'is-invalid': submitted && f.quote.errors,
-                    'is-valid': submitted && f.quote.valid
+            <div class="position-relative mb-3" [ngClass]="{ 'mb-5': submitted && f.citation.errors }">
+                <label for="citation" class="form-label">Quote</label>
+                <textarea class="form-control" id="citation" rows="3" formControlName="citation" [ngClass]="{
+                    'is-invalid': submitted && f.citation.errors,
+                    'is-valid': submitted && f.citation.valid
                 }"></textarea>
-                <div *ngIf="submitted && f.quote.errors" class="invalid-tooltip">
-                    <div *ngIf="f.quote.errors.required">Quote is required</div>
+                <div *ngIf="submitted && f.citation.errors" class="invalid-tooltip">
+                    <div *ngIf="f.citation.errors.required">Quote is required</div>
                 </div>
             </div>
-            <div class="position-relative mb-3">
+            <div class="position-relative mb-3" [ngClass]="{ 'mb-5': submitted && f.tags.errors }">
                 <label for="tags" class="form-label">Tags</label>
-                <ng-select2 [data]="tags" id="tags" [options]="options" formControlName="tags">
-                </ng-select2>
+                <ng-select [items]="tags" multiple="true" bindLabel="name" [clearable]="false"
+                    [hideSelected]="true" [addTag]="addTag" id="tags" formControlName="tags" [ngClass]="{
+                    'is-invalid': submitted && f.tags.errors,
+                    'is-valid': submitted && f.tags.valid
+                }">
+                </ng-select>
+                <div *ngIf="submitted && f.tags.errors" class="invalid-tooltip">
+                    <div *ngIf="f.tags.errors.required">Tag is required</div>
+                </div>
             </div>
             <div class="position-relative mb-3">
                 <div class="form-check form-switch">

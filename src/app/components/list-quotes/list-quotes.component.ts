@@ -39,11 +39,11 @@ export class ListQuotesComponent implements OnInit {
       this.isSpinner = true;
       let from = this.offset * this.limit;
       let to = from + this.limit;
-      this.isFinnished = this.quotes.length > to ? false : true;
       this.offset++;
       setTimeout(() => {
         /** spinner ends after 5 seconds */
         this.quotesList = this.quotesList.concat(this.quotes.slice(from, to));
+        this.isFinnished = this.quotes.length > to ? false : true;
         this.isSpinner = false;
         this.spinner.hide();
       }, 5000);

@@ -19,7 +19,7 @@ import { TokenInterceptor } from './helpers/token.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
-import { NgSelect2Module } from 'ng-select2';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
@@ -35,7 +35,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     BrowserModule,
     BrowserAnimationsModule,
     NgxBootstrapIconsModule.pick(allIcons),
-    NgSelect2Module,
+    NgSelectModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

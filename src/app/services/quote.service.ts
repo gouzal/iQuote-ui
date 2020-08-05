@@ -24,7 +24,7 @@ export class QuoteService {
 
   singleQuote(id: number)
   {
-    return this.http.get<Quote[]>(`${environment.apiUrl}/quotes/${id}`);
+    return this.http.get<Quote>(`${environment.apiUrl}/quotes/${id}`);
   }
 
   createQuote(quote: Quote)

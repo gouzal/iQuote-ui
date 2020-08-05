@@ -1,14 +1,14 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item" routerLink="/quotes"><a>Quotes</a></li>
-        <li class="breadcrumb-item active">Create Quote</li>
+        <li class="breadcrumb-item"><a routerLink="/quotes">Quotes</a></li>
+        <li class="breadcrumb-item active">{{ label }} Quote</li>
     </ol>
 </nav>
 
 <div class="row justify-content-center">
     <div class="col-8">
         <form [formGroup]="quoteForm" (ngSubmit)="onSubmit()" novalidate>
-            <div *ngIf="errorMessage" class="alert alert-danger mb-3">{{errorMessage}}</div>
+            <div *ngIf="errorMessage" class="alert alert-danger mb-3 text-center">{{errorMessage}}</div>
 
             <div class="position-relative mb-3" [ngClass]="{ 'mb-5': submitted && f.author.errors }">
                 <label for="author" class="form-label">Author</label>
@@ -32,7 +32,7 @@
             </div>
             <div class="position-relative mb-3" [ngClass]="{ 'mb-5': submitted && f.tags.errors }">
                 <label for="tags" class="form-label">Tags</label>
-                <ng-select [items]="tags" multiple="true" bindLabel="name" [clearable]="false"
+                <ng-select [items]="tags" multiple="true" bindLabel="value" [clearable]="false"
                     [hideSelected]="true" [addTag]="addTag" id="tags" formControlName="tags" [ngClass]="{
                     'is-invalid': submitted && f.tags.errors,
                     'is-valid': submitted && f.tags.valid
@@ -50,7 +50,7 @@
             </div>
 
             <div class="col-12">
-                <button class="btn btn-primary btn-block" type="submit">Create</button>
+                <button class="btn btn-primary btn-block" type="submit">{{ label }}</button>
             </div>
         </form>
     </div>

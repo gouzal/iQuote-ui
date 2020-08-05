@@ -46,13 +46,13 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.user = new User(
-      this.f.userName.value,
-      this.f.password.value,
-      this.f.firstName.value,
-      this.f.lastName.value,
-      this.f.email.value
-    );
+    this.user = new User();
+
+    this.user.userName = this.f.userName.value;
+    this.user.password = this.f.password.value;
+    this.user.firstName = this.f.firstName.value;
+    this.user.lastName = this.f.lastName.value;
+    this.user.email = this.f.email.value;
 
     this.userService.createUser(this.user);
     // .pipe(first())
